@@ -6,9 +6,9 @@ export const BackImage = () => {
   return (
     <Wrapper>
       <Images>
-        <giftImg>
+        <GiftImg>
           <Imag src="purplepic.png" alt="img" width="570px" height="335px" />
-        </giftImg>
+        </GiftImg>
         <Container>
           <Img>
             <img src="bg.png" alt="img" width="250px" height="160px" />
@@ -77,7 +77,7 @@ const Images = styled.div`
   justify-content: center;
   // width: calc(100% + 16px);
 `;
-const giftImg = styled.div`
+const GiftImg = styled.div`
   padding: 0px 0px 0px 12px;
   max-height: 100%;
   max-width: 100%;
