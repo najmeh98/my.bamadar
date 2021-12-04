@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import react, { useContext, useEffect, useState } from "react";
 //import { Home } from "./home";
 import { config } from "./home/utils/main";
 import axios from "axios";
@@ -16,9 +16,13 @@ import { Price } from "./share/Price";
 import { Link } from "next/link";
 import { useRouter } from "next/router";
 import { AddIconProduct } from "./home/AddIconProduct";
+import { CartContext } from "./CartContext";
 
 export const Product = ({ subproduct }) => {
   const router = useRouter();
+
+  const { AddProduct, removeProduct, AddtoCart, DeleteProduct, products } =
+    useContext(CartContext);
 
   const id = router.query.id;
   useEffect(() => {}, []);
@@ -27,52 +31,57 @@ export const Product = ({ subproduct }) => {
     <Wrapper>
       <Row>
         <Container>
-          {/* {related &&
-            related.length != 0 &&
-            related. */}
-
           {subproduct &&
             subproduct.related &&
             subproduct.related.map((data, index) => {
-              // <Link href={`/product/id`} key={index}>
+              let productFromCart = products.find((p) => p.id === data.id);
               return (
                 <SubRow key={index}>
                   <InnerRow>
-                    <AddIconProduct />
-                    <ProductCard>
-                      {data.images == null ? (
-                        <img
-                          src="no image.png"
-                          width="120px"
-                          height="120px"
-                          alt="no image"
-                        />
-                      ) : (
-                        <img src={config + data.images.thumb} alt="images" />
-                      )}
-                    </ProductCard>
-                    <Right>
-                      <Name>{data.name}</Name>
-                      <SellandDiscount>
-                        <div>
-                          {data.price != data.sell_price ? (
-                            <>
-                              <Price>{data.sell_price}</Price>
-                              <Price cross>{data.price}</Price>
-                            </>
-                          ) : (
-                            <Price>{data.sell_price}</Price>
-                          )}
-                        </div>
-                        {data.discount != 0 && (
-                          <Discountstyle>{data.discount}%</Discountstyle>
+                    <AddIconProduct
+                      AddtoCart={() => AddtoCart(data)}
+                      AddProduct={() => AddProduct(data.id)}
+                      DeleteProduct={() => DeleteProduct(data.id)}
+                      removeProduct={() => removeProduct(data.id)}
+                      productFromCart={
+                        productFromCart && productFromCart.balance
+                      }
+                    />
+                    <>
+                      <ProductCard>
+                        {data.images == null ? (
+                          <img
+                            src="no image.png"
+                            width="120px"
+                            height="120px"
+                            alt="no image"
+                          />
+                        ) : (
+                          <img src={config + data.images.thumb} alt="images" />
                         )}
-                      </SellandDiscount>
-                    </Right>
+                      </ProductCard>
+                      <Right>
+                        <Name>{data.name}</Name>
+                        <SellandDiscount>
+                          <div>
+                            {data.price != data.sell_price ? (
+                              <>
+                                <Price>{data.sell_price}</Price>
+                                <Price cross>{data.price}</Price>
+                              </>
+                            ) : (
+                              <Price>{data.sell_price}</Price>
+                            )}
+                          </div>
+                          {data.discount != 0 && (
+                            <Discountstyle>{data.discount}%</Discountstyle>
+                          )}
+                        </SellandDiscount>
+                      </Right>
+                    </>
                   </InnerRow>
                 </SubRow>
               );
-              // </Link>
             })}
         </Container>
       </Row>
