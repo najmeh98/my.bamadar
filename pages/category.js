@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import axios from "axios";
 import router, { useRouter } from "next/router";
@@ -17,9 +17,10 @@ import { AddIconProduct } from "../components/home/AddIconProduct";
 import { Price } from "../components/share/Price";
 import Currentpage from "./currentpage";
 import Space from "../components/share/Space";
+import { CartContext } from "../components/CartContext";
 
 const Category = () => {
-  const [products, Setproducts] = useState([]);
+  const [product, Setproduct] = useState([]);
   const [pageData, SetpageData] = useState([]);
 
   const { query, push } = useRouter();
@@ -31,6 +32,9 @@ const Category = () => {
 
   let [action, setAction] = useState(undefined);
   let [page, setPage] = useState(undefined);
+
+  const { AddProduct, removeProduct, DeleteProduct, products, AddtoCart } =
+    useContext(CartContext);
 
   console.log({ page, action });
   useEffect(() => {
@@ -63,7 +67,7 @@ const Category = () => {
         // handle success
         console.log(response);
         console.log(response.data.meta);
-        Setproducts(response.data.data);
+        Setproduct(response.data.data);
         SetpageData(response.data.meta);
       })
       .catch(function (error) {
@@ -79,60 +83,78 @@ const Category = () => {
   return (
     <Container>
       <Wrapper>
-        {products &&
-          products.length > 0 &&
-          products.map((pages, index) => (
-            <InnerRow key={index}>
-              <AddIconProduct />
+        {product &&
+          product.length > 0 &&
+          product.map((pages, index) => {
+            let productFromCart = products.find((p) => p.id === pages.id);
+            productFromCart && console.log(productFromCart.balance);
+            return (
+              <InnerRow key={index}>
+                <AddIconProduct
+                  {...pages}
+                  AddtoCart={() => AddtoCart(pages)}
+                  AddProduct={() => AddProduct(pages.id)}
+                  DeleteProduct={() => DeleteProduct(pages.id)}
+                  removeProduct={() => removeProduct(pages.id)}
+                  productFromCart={productFromCart && productFromCart.balance}
+                />
 
-              {/* <img src={image == "empty" ? "no image.png" : apiAdd + image} /> */}
-              <div>
-                <ProductCard>
-                  {pages.images == null ? (
-                    <img
-                      src="no image.png"
-                      width="120px"
-                      height="120px"
-                      alt="no image"
-                    />
-                  ) : (
-                    <img
-                      alt="images"
-                      src={config + pages.images.thumb}
-                      width="120px"
-                      height="100%"
-                    />
-                  )}
-                </ProductCard>
-
-                <Right>
-                  <Name>{pages.name}</Name>
-                  {/* <Measure> */}
-                  {/* قیمت: {pages.price} */}
-                  <SellandDiscount>
-                    <div>
-                      {pages.price != pages.sell_price ? (
-                        <>
-                          <Price item={page} discount={pages.discount}>
-                            {pages.sell_price}
-                          </Price>
-
-                          <Price cross>{pages.price}</Price>
-                        </>
-                      ) : (
-                        <>
-                          <Price>{pages.sell_price}</Price>
-                        </>
-                      )}
-                    </div>
-                    {pages.discount !== 0 && (
-                      <Discountstyle>{pages.discount}%</Discountstyle>
+                {/* <img src={image == "empty" ? "no image.png" : apiAdd + image} /> */}
+                <div
+                  onClick={() => {
+                    router.push({
+                      pathname: "/products",
+                      query: { id: pages.id },
+                    });
+                  }}
+                >
+                  <ProductCard>
+                    {pages.images == null ? (
+                      <img
+                        src="no image.png"
+                        width="120px"
+                        height="120px"
+                        alt="no image"
+                      />
+                    ) : (
+                      <img
+                        alt="images"
+                        src={config + pages.images.thumb}
+                        width="120px"
+                        height="100%"
+                      />
                     )}
-                  </SellandDiscount>
-                </Right>
-              </div>
-            </InnerRow>
-          ))}
+                  </ProductCard>
+
+                  <Right>
+                    <Name>{pages.name}</Name>
+                    {/* <Measure> */}
+                    {/* قیمت: {pages.price} */}
+                    <SellandDiscount>
+                      <div>
+                        {pages.price != pages.sell_price ? (
+                          <>
+                            <Price item={page} discount={pages.discount}>
+                              {pages.sell_price}
+                            </Price>
+
+                            <Price cross>{pages.price}</Price>
+                          </>
+                        ) : (
+                          <>
+                            <Price>{pages.sell_price}</Price>
+                          </>
+                        )}
+                      </div>
+                      {pages.discount !== 0 && (
+                        <Discountstyle>{pages.discount}%</Discountstyle>
+                      )}
+                    </SellandDiscount>
+                  </Right>
+                </div>
+              </InnerRow>
+            );
+          })}
       </Wrapper>
 
       <Currentpage pageData={pageData.per_page} />
