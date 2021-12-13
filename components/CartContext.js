@@ -67,20 +67,19 @@ export const CartContextProvider = (props) => {
   const AddtoCart = useCallback(
     (product) => {
       let index = products.findIndex((p) => p.id === product.id);
-      // if (index > -1) {
-      //   setProducts(
-      //     products.map((product) => {
-      //       if (product.id === id) {
-      //         return { ...product, balance: product.balance + 1 };
-      //       } else {
-      //         return product;
-      //       }
-      //     })
-      //   );
-      // } else {
-      //   setProducts([...products, { ...product, balance: 1 }]);
-      // }
-      setProducts([...products, { ...product, balance: 1 }]);
+      if (index > -1) {
+        setProducts(
+          products.map((product) => {
+            if (product.id === product.id) {
+              return { ...product, balance: product.balance + 1 };
+            } else {
+              return product;
+            }
+          })
+        );
+      } else {
+        setProducts([...products, { ...product, balance: 1 }]);
+      }
     },
     [products]
   );
