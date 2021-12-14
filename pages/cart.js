@@ -94,7 +94,7 @@ const Wrapper = styled.div`
   width: 100%;
   margin: auto;
   background: rgb(245, 245, 245);
-  height: calc(100vh - 120px);
+  height: calc(100vh - 80px);
 `;
 
 const Container = styled.div`
