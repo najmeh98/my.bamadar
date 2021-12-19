@@ -17,46 +17,44 @@ export const FooterIcon = () => {
     <>
       <Row>
         <Wrapper>
-          <BottomNav
-            onClick={() => {
-              router.push("/");
-            }}
-          >
-            <HomeIcon />
-            <span>خانه</span>
-          </BottomNav>
-          <BottomNav
-            onClick={() => {
-              router.push("/sub_Categories");
-            }}
-          >
-            <CategoriesIcon />
-            <span>دسته بندی</span>
-          </BottomNav>
-          <BottomNav>
-            <ContactIcon />
-            <span>پشتیبانی آنلاین</span>
-          </BottomNav>
-          <BottomNav
-            onClick={() => {
-              router.push("/cart");
-            }}
-          >
-            <ShopIcon />
-            <span>سبد خرید</span>
-          </BottomNav>
-          <BottomNav
-            onClick={() => {
-              router.push("/profile");
-            }}
-          >
-            <PersonIcon />
-            <span>پروفایل</span>
-          </BottomNav>
+          <Footerpart path="/" title="خانه" image={<HomeIcon />} />
+
+          <Footerpart
+            path="/sub_Categories"
+            title="دسته بندی"
+            image={<CategoriesIcon />}
+          />
+
+          <Footerpart
+            path="/"
+            title=" پشتیبانی آنلاین"
+            image={<ContactIcon />}
+          />
+
+          <Footerpart path="/cart" title=" سبد خرید " image={<ShopIcon />} />
+
+          <Footerpart
+            path="/profile"
+            title=" پروفایل "
+            image={<PersonIcon />}
+          />
         </Wrapper>
       </Row>
       <div style={{ height: "45px" }}></div>
     </>
+  );
+};
+
+const Footerpart = ({ title, path, image }) => {
+  return (
+    <BottomNav
+      onClick={() => {
+        router.push(path);
+      }}
+    >
+      {image}
+      <span>{title}</span>
+    </BottomNav>
   );
 };
 
