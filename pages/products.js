@@ -1,5 +1,5 @@
 import Head from "next/head";
-import react, { useEffect, useState } from "react";
+import react, { useContext, useEffect, useState } from "react";
 import { Header } from "../components/home/header";
 //import { Product } from "../components/home/Product";
 import axios from "axios";
@@ -11,13 +11,32 @@ import { useRouter } from "next/router";
 //import React, { useState } from "react";
 import Image from "next/image";
 import { InputBox } from "../components/home/InputBox";
-import { CopyIcon, ShareICon } from "../components/home/icons/Icons";
+import {
+  AddblueIcon,
+  CopyIcon,
+  DecreaseIcon,
+  ShareICon,
+  TrushICon,
+} from "../components/home/icons/Icons";
 import { Product } from "../components/Product";
 import Link from "next/link";
-
+import {
+  AddIconProduct,
+  BlueAdd,
+  Button,
+  DecreaseStyle,
+  Number,
+} from "../components/home/AddIconProduct";
+import { CartContext } from "../components/CartContext";
+import AddToBox from "../components/home/AddtoBox";
+import { Price } from "../components/share/Price";
 const Products = () => {
   const [subproduct, SetsubProduct] = useState({});
   // const [related, Setrelated] = useState([]);
+  const [addStyle, SetaddStyle] = useState(false);
+
+  const { AddtoCart, products, AddProduct, removeProduct } =
+    useContext(CartContext);
 
   console.log("debug", subproduct);
   const router = useRouter();
@@ -50,7 +69,10 @@ const Products = () => {
         console.log(error.config);
       });
   }, [id]);
-
+  let productFromCart = products.find((p) => p.id === subproduct.id);
+  let productFromCartCount = productFromCart && productFromCart.balance;
+  //let Discount = subproduct && subproduct.discount / 100;
+  console.log(productFromCart && productFromCart.balance);
   return (
     <Height>
       {/* <InputBox /> */}
@@ -72,12 +94,6 @@ const Products = () => {
                 height="300px"
                 style={{ borderRadius: "20px" }}
               />
-              // <img
-              //   src={config + subproduct.images.thumb}
-              //   width="300px"
-              //   height="300px"
-              //   style={{ borderRadius: "20px" }}
-              // />
             )}
           </Wrapper>
           <Product_name>
@@ -87,28 +103,112 @@ const Products = () => {
 
             <Productoption>
               <Price_row>
-                <Price>
-                  <TopPrice>
-                    <SellPrice>{subproduct.sell_price}</SellPrice>
-                    <Discount>{subproduct.discount}%</Discount>
-                  </TopPrice>
+                <PricePart>
+                  {subproduct.discount !== 0 ? (
+                    <>
+                      <TopPrice>
+                        <SellPrice>
+                          <Price>{subproduct.sell_price}</Price>
+                        </SellPrice>
 
-                  <Mainprice>{subproduct.price}</Mainprice>
-                </Price>
+                        <Discount>{subproduct.discount}%</Discount>
+                      </TopPrice>
+                      <Mainprice>{subproduct.price}</Mainprice>
+                    </>
+                  ) : (
+                    <SellPrice>
+                      <Price>{subproduct.sell_price}</Price>
+                    </SellPrice>
+                  )}
+                </PricePart>
               </Price_row>
-              <AddtoBox>
-                <Box>افزدون به سبد</Box>
+              <AddtoBox
+              // onClick={() => {
+              //   AddtoCart(subproduct);
+              // }}
+              >
+                {addStyle ? (
+                  <Box>
+                    {/* <p>hiii</p> */}
+                    <AddtoBox>
+                      <BlueAdd onClick={() => AddProduct(subproduct.id)}>
+                        <AddblueIcon fill="#fff" />
+                      </BlueAdd>
+                      <Number>
+                        <span>{productFromCart}</span>
+                      </Number>
+                      {productFromCart && productFromCart == 1 ? (
+                        <Button onClick={showdeleteItem}>
+                          <TrushICon fill="#fff" />
+                        </Button>
+                      ) : (
+                        <DecreaseStyle
+                          onClick={() => removeProduct(subproduct.id)}
+                        >
+                          <DecreaseIcon fill="#fff" />
+                        </DecreaseStyle>
+                      )}
+                    </AddtoBox>
+                  </Box>
+                ) : (
+                  <Box
+                    onClick={() => {
+                      SetaddStyle(!addStyle);
+                      AddtoCart(subproduct);
+                    }}
+                  >
+                    افزدون به سبد
+                  </Box>
+                )}
               </AddtoBox>
+              {/* <AddIconProduct
+                AddInSabad={true}
+                AddtoCart={() => AddtoCart(subproduct)}
+              /> */}
+
+              {/* <AddToBox
+                AddtoCart={() => AddtoCart(subproduct)}
+                productFromCart={productFromCart}
+                removeProduct={() => removeProduct(subproduct.id)}
+                DeleteProduct={() => DeleteProduct(subproduct.id)}
+              /> */}
             </Productoption>
 
             <Order>
               <div>
-                <span>مقدار سفارش:</span> 0 {subproduct.measurement}
+                <span>مقدار سفارش:</span>
+                {productFromCart && productFromCart.balance !== 0
+                  ? productFromCart && productFromCart.balance
+                  : 0}
+                <span style={{ paddingRight: "5px" }}>
+                  {subproduct.measurement}
+                </span>
               </div>
-              <div>
+              <p>
                 <span>برند:</span>
                 {subproduct.brand}
-              </div>
+              </p>
+              {addStyle && (
+                <>
+                  <div style={{ display: "flex" }}>
+                    <span>جمع پرداختی: </span>
+                    <Price>
+                      {subproduct.sell_price * productFromCartCount}
+                    </Price>
+                  </div>
+                  <div style={{ display: "flex", color: "red" }}>
+                    <span>تخفیف بامادر:</span>
+                    <Price>
+                      {Math.ceil(
+                        (subproduct.price *
+                          productFromCartCount *
+                          subproduct.discount) /
+                          100
+                      )}
+                    </Price>
+                  </div>
+                </>
+              )}
             </Order>
             <SelectIcon>
               <CopyIcon />
@@ -116,9 +216,9 @@ const Products = () => {
             </SelectIcon>
           </Product_name>
           <div>
-            <Link href="/products/${id}">
-              <Product subproduct={subproduct} />
-            </Link>
+            {/* <Link href="/products/${id}"> */}
+            <Product subproduct={subproduct} />
+            {/* </Link> */}
           </div>
         </Container>
       )}
@@ -170,7 +270,7 @@ const Title = styled.div`
     font-weight: bold;
   }
 `;
-const Price = styled.div`
+const PricePart = styled.div`
   display: flex;
   flex-wrap: wrap;
   direction: rtl;
@@ -187,8 +287,8 @@ const TopPrice = styled.div`
   text-align: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  width: 100%;
-  flex-basis: 100%;
+  width: 70%;
+  // flex-basis: 100%;
 `;
 
 const SellPrice = styled.div`
@@ -241,8 +341,8 @@ const Box = styled.div`
   font-size: 16px;
   color: #fff;
   background-color: #179bbf;
-  padding: 0px 15px;
-  width: 155px;
+  padding: 0px 25px;
+  // width: 155px;
   height: 30px;
   border: 1px solid #179bbf;
   cursor: pointer;

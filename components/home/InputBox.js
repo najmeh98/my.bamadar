@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import Router from "next/router";
 import { mobile, tablet } from "./utils/media";
 import { Image } from "next/image";
+import router from "next/router";
 export const InputBox = ({ products }) => {
   const [value, Setvalue] = useState("");
   const [itemList, SetitemList] = useState([]);
@@ -37,6 +38,9 @@ export const InputBox = ({ products }) => {
                 alt="bamadar"
                 width="50px"
                 height="50px"
+                onClick={() => {
+                  router.push("/");
+                }}
               />
             </Container>
 
@@ -70,7 +74,7 @@ const Container = styled.div`
   img {
     margin-left: 32px;
     margin-right: 13px;
-
+    cursor: pointer;
     background-color: transparent;
   }
 `;
