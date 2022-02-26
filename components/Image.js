@@ -7,14 +7,20 @@ export const BackImage = () => {
     <Wrapper>
       <Images>
         <GiftImg>
-          <Imag src="purplepic.png" alt="img" width="570px" height="335px" />
+          <ImageDetails
+            src="purplepic.png"
+            alt="img"
+            width="570px"
+            height="335px"
+          />
         </GiftImg>
+
         <Container>
           <Img>
-            <img src="bg.png" alt="img" width="250px" height="160px" />
+            <ImageDetails src="bg.png" alt="img" width="250px" height="160px" />
           </Img>
           <Img>
-            <img
+            <ImageDetails
               src="freedelivery.jpg"
               alt="img"
               width="250px"
@@ -25,6 +31,10 @@ export const BackImage = () => {
       </Images>
     </Wrapper>
   );
+};
+
+const ImageDetails = ({ height, width, src, alt }) => {
+  return <img src={src} alt={alt} height={height} width={width} />;
 };
 
 const Wrapper = styled.div`
