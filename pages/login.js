@@ -82,12 +82,12 @@ function Login() {
         console.log(message);
         //message === "welcome" && localStorage.setItem(access);
 
-        const { access_token: token } = res?.data?.data || {};
+        const { access_token: token, mobile } = res?.data?.data || {};
 
         if (token) {
           localStorage.setItem("token", token);
-          localStorage.setItem("MaderCell", res?.data?.mobile);
-
+          localStorage.setItem("MaderCell", mobile);
+          console.log(mobile);
           if (message == "welcome") {
             router.push("/");
           } else {
