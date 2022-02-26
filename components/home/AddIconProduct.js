@@ -14,6 +14,7 @@ import {
 import { desktop, mobile } from "./utils/media";
 import { useRouter } from "next/router";
 import { Link } from "next/link";
+import AddToBox from "./AddtoBox";
 
 export const AddIconProduct = ({
   AddtoCart,
@@ -22,6 +23,7 @@ export const AddIconProduct = ({
   removeProduct,
   products,
   productFromCart,
+  AddInSabad,
   ...item
 }) => {
   const [addStyle, SetaddStyle] = useState(false);
@@ -51,42 +53,34 @@ export const AddIconProduct = ({
           </Add>
         </PlusICon>
       </AddtoCard>
+      {/* )} */}
 
-      {addStyle ? (
-        <AddtoCard>
-          <PlusICon props>
-            <BlueAdd onClick={() => AddProduct()}>
-              <AddblueIcon fill="#179bbf" />
-            </BlueAdd>
-            <Number>
-              <span>{productFromCart}</span>
-            </Number>
+      <AddtoCard>
+        {addStyle ? (
+          <>
+            <PlusICon props>
+              <BlueAdd onClick={() => AddProduct()}>
+                <AddblueIcon fill="#179bbf" />
+              </BlueAdd>
+              <Number>
+                <span>{productFromCart}</span>
+              </Number>
 
-            {productFromCart && productFromCart == 1 ? (
-              <Button onClick={showdeleteItem}>
-                <TrushICon fill="#179bbf" />
-              </Button>
-            ) : (
-              <DecreaseStyle onClick={() => removeProduct()}>
-                <DecreaseIcon fill="#179bbf" />
-              </DecreaseStyle>
-            )}
-          </PlusICon>
-        </AddtoCard>
-      ) : (
-        // <AddtoCard
-        //   onClick={() => {
-        //     SetaddStyle(!addStyle);
-        //   }}
-        // >
-        //   <PlusICon>
-        //     <Add>
-        //       <AddIcon />
-        //     </Add>
-        //   </PlusICon>
-        // </AddtoCard>
-        ""
-      )}
+              {productFromCart && productFromCart == 1 ? (
+                <Button onClick={showdeleteItem}>
+                  <TrushICon fill="#179bbf" />
+                </Button>
+              ) : (
+                <DecreaseStyle onClick={() => removeProduct()}>
+                  <DecreaseIcon fill="#179bbf" />
+                </DecreaseStyle>
+              )}
+            </PlusICon>
+          </>
+        ) : (
+          ""
+        )}
+      </AddtoCard>
       {/* {deleteitem ? <DeleteProduct /> : null} */}
 
       {deleteitem ? (
@@ -197,7 +191,7 @@ const AddtoCard = styled.div`
   display: flex;
   align-items: center;
 `;
-const PlusICon = styled.div`
+export const PlusICon = styled.div`
   display: flex;
   border-bottom-left-radius: 15px;
   border-top-right-radius: 10px;
@@ -218,13 +212,13 @@ const Add = styled.div`
   height: 20px;
 `;
 
-const Button = styled.div`
+export const Button = styled.div`
   width: 24px;
   height: 24px;
   //  display: flex;
   //  align-items: center;
 `;
-const Number = styled.div`
+export const Number = styled.div`
   color: #179bbf;
   padding: 0px 12px;
   font-size: 15px;
@@ -235,7 +229,7 @@ const Number = styled.div`
   text-align: center;
   height: 100%;
 `;
-const BlueAdd = styled.div`
+export const BlueAdd = styled.div`
   font-size: 24px;
   height: 24px;
   width: 24px;
@@ -243,10 +237,29 @@ const BlueAdd = styled.div`
   align-items: center;
 `;
 
-const DecreaseStyle = styled.div`
+export const DecreaseStyle = styled.div`
   height: 24px;
   width: 24px;
   font-size: 24px;
   display: flex;
   align-items: center;
+`;
+const AddtoBox = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 50%;
+  flex-basis: 50%;
+`;
+const Box = styled.div`
+  border-radius: 30px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #179bbf;
+  padding: 0px 15px;
+  width: 155px;
+  height: 30px;
+  border: 1px solid #179bbf;
+  cursor: pointer;
 `;
