@@ -18,6 +18,7 @@ import { Price } from "../components/share/Price";
 import Currentpage from "./currentpage";
 import Space from "../components/share/Space";
 import { CartContext } from "../components/CartContext";
+import Pages from "../components/Pages";
 
 const Category = () => {
   const [product, Setproduct] = useState([]);
@@ -51,7 +52,7 @@ const Category = () => {
 
   useEffect(() => {
     if (!action) return;
-    //  if (!page) return;
+    //if (!page) return;
     // ادرس کانفیک رو مطابق وبسایت بامادر تغییر دادم
     // https://www.bamadar.com/data
 
@@ -157,7 +158,12 @@ const Category = () => {
           })}
       </Wrapper>
 
-      <Currentpage pageData={pageData.per_page} />
+      {pageData && products.length !== 0 && (
+        <Pages
+          maxpage={pageData.last_page}
+          currentpage={page ? page : pageData.currentpage}
+        />
+      )}
       <Space vertical={60} />
     </Container>
   );
