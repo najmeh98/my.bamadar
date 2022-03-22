@@ -73,7 +73,7 @@ export const Product = ({ subproduct }) => {
                               <Price>{data.sell_price}</Price>
                             )}
                           </div>
-                          {data.discount != 0 && (
+                          {data.discount !== 0 && (
                             <Discountstyle>{data.discount}%</Discountstyle>
                           )}
                         </SellandDiscount>
