@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Config, config } from "../components/home/utils/main";
 import { Style } from "./profile";
-import { Formik, useFormik, useFormikContext } from "formik";
+import { Formik, useFormik, useFormikContext, ErrorMessage } from "formik";
 import { Data, FleshIcon } from "../components/home/icons/Icons";
 import { Wrapper, Stylepage } from "./login";
 import { Space } from "../components/share/Space";
