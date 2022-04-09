@@ -12,6 +12,7 @@ import { CartContext } from "./CartContext";
 
 export const Homeproduct = () => {
   const [cats, SetCats] = useState([]);
+  const [hasLoded, setHasLoded] = useState(false);
 
   const router = useRouter();
 
@@ -24,6 +25,7 @@ export const Homeproduct = () => {
     DeleteProduct,
     AddtoCart,
     balance,
+    setProducts,
   } = useContext(CartContext);
 
   useEffect(() => {
@@ -45,12 +47,6 @@ export const Homeproduct = () => {
         }
         console.log(error.config);
       });
-  }, []);
-
-  useEffect(() => {
-    let newdata = localStorage.getItem("list");
-    // SetCats(newdata);
-    console.log(newdata);
   }, []);
 
   return (
