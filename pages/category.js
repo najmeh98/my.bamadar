@@ -19,6 +19,7 @@ import Currentpage from "./currentpage";
 import Space from "../components/share/Space";
 import { CartContext } from "../components/CartContext";
 import Pages from "../components/Pages";
+import { Pagination } from "../components/Pagination";
 
 const Category = () => {
   const [product, Setproduct] = useState([]);
@@ -32,7 +33,7 @@ const Category = () => {
   //
 
   let [action, setAction] = useState(undefined);
-  let [page, setPage] = useState(undefined);
+  let [page, setPage] = useState(1);
 
   const { AddProduct, removeProduct, DeleteProduct, products, AddtoCart } =
     useContext(CartContext);
@@ -52,7 +53,7 @@ const Category = () => {
 
   useEffect(() => {
     if (!action) return;
-    //if (!page) return;
+    // if (!page) return;
     // ادرس کانفیک رو مطابق وبسایت بامادر تغییر دادم
     // https://www.bamadar.com/data
 
@@ -158,12 +159,13 @@ const Category = () => {
           })}
       </Wrapper>
 
-      {pageData && products.length !== 0 && (
-        <Pages
-          maxpage={pageData.last_page}
-          currentpage={page ? page : pageData.currentpage}
-        />
-      )}
+      <Space vertical={20} />
+      <Pagination
+        maxpage={pageData.last_page}
+        currentpage={page ? page : pageData.currentpage}
+        setPage={setPage}
+        page={page}
+      />
       <Space vertical={60} />
     </Container>
   );
