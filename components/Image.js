@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { SearchInput } from "./home/SearchInput";
-import { desktop, mobile, tablet } from "./home/utils/media";
+import { desktop, mobile, notmobile, tablet } from "./home/utils/media";
 import Image from "next/image";
 export const BackImage = () => {
   return (
@@ -34,7 +34,15 @@ export const BackImage = () => {
 };
 
 const ImageDetails = ({ height, width, src, alt }) => {
-  return <img src={src} alt={alt} height={height} width={width} />;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      height={height}
+      width={width}
+      style={{ width: "100%" }}
+    />
+  );
 };
 
 const Wrapper = styled.div`
@@ -75,6 +83,13 @@ const Img = styled.div`
       width: 200px;
       height: 140px;
     `)}
+    ${notmobile(css`
+      max-width: 200px;
+      height: 110px;
+    `)}
+    @media (max-width: 400px) {
+      display: none;
+    }
   }
 `;
 
@@ -96,6 +111,14 @@ const GiftImg = styled.div`
       width: 910px;
       height: 536px;
     `)}
+    ${notmobile(css`
+      width: 230px;
+      height: 230px;
+    `)}
+    @media (max-width: 400px) {
+      height: 230px;
+      min-width: 330px;
+    }
   }
 `;
 
