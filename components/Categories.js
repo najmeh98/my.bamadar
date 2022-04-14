@@ -5,16 +5,15 @@ import axios from "axios";
 import router from "next/router";
 export const Categories = ({ key, name, image, apiAdd }) => {
   return (
-    <>
-      <InnerRow
-        onClick={() => {
-          router.push({ pathname: "/sub_Categories" });
-        }}
-      >
-        <Image src={apiAdd + image} alt="images" />
-        <Name>{name}</Name>
-      </InnerRow>
-    </>
+    <InnerRow
+      onClick={() => {
+        router.push({ pathname: "/sub_Categories" });
+      }}
+      key={key}
+    >
+      <Image src={apiAdd + image} alt="images" />
+      <Name>{name}</Name>
+    </InnerRow>
   );
 };
 const MainWrapper = styled.div`
