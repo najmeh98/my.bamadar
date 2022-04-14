@@ -33,7 +33,7 @@ const Category = () => {
   //
 
   let [action, setAction] = useState(undefined);
-  let [page, setPage] = useState(1);
+  let [page, setPage] = useState(undefined);
 
   const { AddProduct, removeProduct, DeleteProduct, products, AddtoCart } =
     useContext(CartContext);
@@ -62,7 +62,7 @@ const Category = () => {
       url += "&page=" + page;
     }
 
-    console.log({ url });
+    console.log({ url, page });
     axios
       .get(url)
       .then(function (response) {
@@ -165,6 +165,7 @@ const Category = () => {
         currentpage={page ? page : pageData.currentpage}
         setPage={setPage}
         page={page}
+        // url={url}
       />
       <Space vertical={60} />
     </Container>
