@@ -60,6 +60,7 @@ export default function Categorybox({
                       pathname: "/category",
                       query: {
                         action: Cat.id,
+                        page: 1,
                       },
                     });
                   }}
