@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import styled, { css } from "styled-components";
 
-export const Pagination = ({ maxpage, currentpage, setPage, page }) => {
+export const Pagination = ({ maxpage, currentpage, setPage, page, url }) => {
   const [isClick, SetisClick] = useState();
   let { query } = useRouter();
   let router = useRouter();
@@ -23,7 +24,7 @@ export const Pagination = ({ maxpage, currentpage, setPage, page }) => {
               });
               setPage(pageNumber);
             }}
-            active={pageNumber === index + 1}
+            active={page == pageNumber}
           >
             {pageNumber}
           </Container>
