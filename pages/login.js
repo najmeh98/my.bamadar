@@ -151,10 +151,12 @@ function Login() {
         {/* <Space vertical={20} /> */}
 
         {isInVerification ? (
+          // eslint-disable-next-line jsx-a11y/alt-text
           <Image>
             <img src="shield.svg" alt="shield" width="100px" height=" 100px" />
           </Image>
         ) : (
+          // eslint-disable-next-line jsx-a11y/alt-text
           <Image>
             <img
               src="rocket.svg"
