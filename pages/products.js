@@ -28,7 +28,6 @@ import {
   Number,
 } from "../components/home/AddIconProduct";
 import { CartContext } from "../components/CartContext";
-import AddToBox from "../components/home/AddtoBox";
 import { Price } from "../components/share/Price";
 const Products = () => {
   const [subproduct, SetsubProduct] = useState({});

@@ -1,20 +1,7 @@
 import react, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
-import {
-  DashboardIcon,
-  PersonIcon,
-  GroceryIcon,
-  HomeIcon,
-  Icons,
-  AddIcon,
-  TrushICon,
-  AddblueIcon,
-  DecreaseIcon,
-} from "./icons/Icons";
-import { desktop, mobile } from "./utils/media";
+import { AddIcon, TrushICon, AddblueIcon, DecreaseIcon } from "./icons/Icons";
 import { useRouter } from "next/router";
-import { Link } from "next/link";
-import AddToBox from "./AddtoBox";
 
 export const AddIconProduct = ({
   AddtoCart,

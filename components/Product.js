@@ -1,7 +1,5 @@
 import react, { useContext, useEffect, useState } from "react";
-//import { Home } from "./home";
 import { config } from "./home/utils/main";
-import axios from "axios";
 import {
   InnerRow,
   ProductCard,
@@ -13,7 +11,6 @@ import {
 import styled, { css } from "styled-components";
 import { Row } from "../pages";
 import { Price } from "./share/Price";
-import { Link } from "next/link";
 import { useRouter } from "next/router";
 import { AddIconProduct } from "./home/AddIconProduct";
 import { CartContext } from "./CartContext";
