@@ -1,12 +1,9 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-//import { Footer } from "../components/home/Footer";
-import { Header } from "../components/home/header";
 import { InputBox } from "../components/home/InputBox";
 import { FooterIcon } from "../components/home/FooterIcon";
 import Head from "next/head";
 import { CartContextProvider } from "../components/CartContext";
 
-//import "../public/vazir.css";
 const GlobalStyle = createGlobalStyle`
   body {
     direction: rtl;

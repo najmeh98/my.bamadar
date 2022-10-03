@@ -1,6 +1,4 @@
 import Head from "next/head";
-import react from "react";
-import styled, { css } from "styled-components";
 
 export const Header = () => {
   return (

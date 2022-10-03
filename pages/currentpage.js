@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import Space from "../components/share/Space";
 
 export default function Currentpage({ pageData }) {
   return (

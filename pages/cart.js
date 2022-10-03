@@ -2,11 +2,10 @@ import React, { useContext, useState } from "react";
 import styled, { css } from "styled-components";
 import CartBox from "../components/CartBox";
 import { CartContext } from "../components/CartContext";
-import { AddIconProduct } from "../components/home/AddIconProduct";
 import { Alertcartbox, TrushCartbox } from "../components/home/icons/Icons";
 import { mobile, tablet } from "../components/home/utils/media";
-import { DeleteProduct } from "../components/DeleteProduct";
 import ClearAll from "../components/ClearAll";
+
 export default function Cart() {
   const { products, AddProduct, removeProduct, DeleteProduct } =
     useContext(CartContext);

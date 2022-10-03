@@ -1,19 +1,8 @@
 import react, { useContext, useState } from "react";
 import styled, { css } from "styled-components";
-import {
-  DashboardIcon,
-  PersonIcon,
-  GroceryIcon,
-  HomeIcon,
-  Icons,
-  AddIcon,
-  TrushICon,
-  AddblueIcon,
-  DecreaseIcon,
-} from "./icons/Icons";
+import { TrushICon, AddblueIcon, DecreaseIcon } from "./icons/Icons";
 import { desktop, mobile } from "./utils/media";
 import { useRouter } from "next/router";
-import { CartContext } from "../CartContext";
 export default function Changecount({
   AddProduct,
   DeleteProduct,

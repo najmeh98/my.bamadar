@@ -4,14 +4,7 @@ import { ArrowDown, ArrowIcon } from "./home/icons/Icons";
 import { useState } from "react";
 import { config } from "./home/utils/main";
 import router from "next/router";
-export default function Categorybox({
-  showmore,
-  item,
-  // itemstoShow,
-  key,
-  // SetitemstoShow,
-  arrayItem,
-}) {
+export default function Categorybox({ showmore, item, key, arrayItem }) {
   const [isExpended, setisExpended] = useState(false);
   const [itemstoShow, SetitemstoShow] = useState(5);
 

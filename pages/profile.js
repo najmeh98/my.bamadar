@@ -2,7 +2,6 @@ import router from "next/router";
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import {
-  ArrowIcon,
   ArrowrightIcon,
   BoxIcon,
   CallIcon,

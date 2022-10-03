@@ -3,8 +3,6 @@ import styled, { css } from "styled-components";
 import axios from "axios";
 import router, { useRouter } from "next/router";
 import { Config, config } from "../components/home/utils/main";
-import { Image } from "next/image";
-import { Product } from "../components/Product";
 import {
   Discountstyle,
   InnerRow,
@@ -15,10 +13,8 @@ import {
 } from "../components/Homeproduct";
 import { AddIconProduct } from "../components/home/AddIconProduct";
 import { Price } from "../components/share/Price";
-import Currentpage from "./currentpage";
 import Space from "../components/share/Space";
 import { CartContext } from "../components/CartContext";
-import Pages from "../components/Pages";
 import { Pagination } from "../components/Pagination";
 
 const Category = () => {

@@ -1,14 +1,11 @@
 import axios from "axios";
 import react, { createContext, useEffect, useState, useContext } from "react";
 import styled, { css } from "styled-components";
-import Link from "next/link";
 import { config, Configurl } from "../components/home/utils/main";
 import { Price } from "./share/Price";
 import { useRouter } from "next/router";
-//import { AddIcon } from "./home/icons/Icons";
 import { AddIconProduct } from "./home/AddIconProduct";
 import { CartContext } from "./CartContext";
-//import Recommendedproducts from "./Recommended-products";
 
 export const Homeproduct = () => {
   const [cats, SetCats] = useState([]);

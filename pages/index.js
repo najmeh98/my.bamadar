@@ -1,24 +1,16 @@
 import { Header } from "../components/home/header";
 import Head from "next/head";
-import { SearchInput } from "../components/home/SearchInput";
 import styled, { css } from "styled-components";
 import { BackgroundImage } from "../components/BackgroundImage";
 import { BackImage } from "../components/Image";
-//import { Home } from "../components/Home";
-//import { Product } from "../components/home/Product";
 import { SubTitel } from "../components/SubTitel";
 import { Categories } from "../components/Categories";
 import { config } from "../components/home/utils/main";
 import react, { useEffect, useState } from "react";
 import axios from "axios";
-//import { Footer } from "../components/home/Footer";
 import { desktop, mobile, tablet } from "../components/home/utils/media";
-import { Products } from "./products";
 import { MainWrapper, MainRow } from "./Style";
-import { InputBox } from "../components/home/InputBox";
-import { FooterIcon } from "../components/home/FooterIcon";
 import Link from "next/link";
-import { Layout } from "../components/Layout";
 import { Homeproduct } from "../components/Homeproduct";
 function HomePage() {
   const [cats, SetCats] = useState([]);

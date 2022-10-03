@@ -1,5 +1,3 @@
-import react from "react";
-
 import styled, { css } from "styled-components";
 import {
   PersonIcon,
@@ -8,7 +6,6 @@ import {
   ContactIcon,
   ShopIcon,
 } from "./icons/Icons";
-import { desktop, mobile } from "./utils/media";
 import router, { useRouter } from "next/router";
 
 export const FooterIcon = () => {

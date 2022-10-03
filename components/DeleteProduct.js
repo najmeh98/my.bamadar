@@ -1,4 +1,3 @@
-import router, { useRouter } from "next/router";
 import react, { useContext, useState } from "react";
 import { render } from "react-dom";
 import styled, { css } from "styled-components";

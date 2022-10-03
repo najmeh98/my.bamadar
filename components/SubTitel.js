@@ -1,11 +1,6 @@
 import react from "react";
 import styled, { css } from "styled-components";
-import {
-  CategoriesIcon,
-  MoreMenuIcon,
-  SpicesIcon,
-  MoreListIcon,
-} from "./home/icons/Icons";
+import { MoreListIcon } from "./home/icons/Icons";
 export const SubTitel = () => {
   return (
     <div>

@@ -1,4 +1,3 @@
-import react from "react";
 export const SearchIcon = (props) => {
   return (
     <svg width={17} height={17} viewBox="0 0 512.005 512.005" {...props}>

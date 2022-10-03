@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { LetterICon, ValiditionIcon } from "../components/home/icons/Icons";
-//import Space from "../components/share/Space";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { Config, config, phoneValidation } from "../components/home/utils/main";
 import router from "next/router";
-import { mobile } from "../components/home/utils/media";
 import Space from "../components/share/Space";
-//import { Wrapper } from './profile'
+
 function Login() {
   const [mobileNumber, SetmobileNumber] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
