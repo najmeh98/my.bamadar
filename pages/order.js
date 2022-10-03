@@ -2,24 +2,12 @@ import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Config, config } from "../components/home/utils/main";
-import { Style } from "./profile";
 import { Formik, useFormik, useFormikContext, ErrorMessage } from "formik";
-import { Data, FleshIcon } from "../components/home/icons/Icons";
 import { Wrapper, Stylepage } from "./login";
 import { Space } from "../components/share/Space";
 import router from "next/router";
 export const Order = () => {
   const [user, setUser] = useState();
-
-  //const [token, settoken] = useState();
-
-  // const [loginCheck, setloginCheck] = useState();
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("access_token")) {
-  //     setloginCheck(true);
-  //   }
-  // }, []);
 
   //اپدیت اطلاعات
 

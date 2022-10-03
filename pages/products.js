@@ -1,16 +1,9 @@
-import Head from "next/head";
 import react, { useContext, useEffect, useState } from "react";
-import { Header } from "../components/home/header";
-//import { Product } from "../components/home/Product";
 import axios from "axios";
 import styled, { css } from "styled-components";
-import { desktop, mobile, tablet } from "../components/home/utils/media";
-import { Categories } from "../components/Categories";
 import { config } from "../components/home/utils/main";
 import { useRouter } from "next/router";
-//import React, { useState } from "react";
 import Image from "next/image";
-import { InputBox } from "../components/home/InputBox";
 import {
   AddblueIcon,
   CopyIcon,
@@ -19,9 +12,7 @@ import {
   TrushICon,
 } from "../components/home/icons/Icons";
 import { Product } from "../components/Product";
-import Link from "next/link";
 import {
-  AddIconProduct,
   BlueAdd,
   Button,
   DecreaseStyle,
@@ -29,9 +20,9 @@ import {
 } from "../components/home/AddIconProduct";
 import { CartContext } from "../components/CartContext";
 import { Price } from "../components/share/Price";
+
 const Products = () => {
   const [subproduct, SetsubProduct] = useState({});
-  // const [related, Setrelated] = useState([]);
   const [addStyle, SetaddStyle] = useState(false);
 
   const { AddtoCart, products, AddProduct, removeProduct } =

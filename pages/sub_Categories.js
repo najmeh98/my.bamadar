@@ -1,11 +1,7 @@
 import react, { useEffect, useState } from "react";
-//import { desktop, mobile, tablet } from "./home/utils/media";
 import styled, { css } from "styled-components";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { ArrowDown, ArrowIcon } from "../components/home/icons/Icons";
-import { Image } from "next/image";
-import { config } from "../components/home/utils/main";
 import Categorybox from "../components/Categorybox";
 import {
   desktop,
@@ -16,8 +12,6 @@ import {
 
 const Sub_categories = () => {
   const [subCat, SetsubCat] = useState([]);
-  //  const [expanded, Setexpanded] = useState(false);
-  //  const [itemstoShow, SetitemstoShow] = useState(5);
 
   const router = useRouter();
   const id = router.query.id;
