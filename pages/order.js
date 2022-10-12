@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { Config, config } from "../components/home/utils/main";
 import { Formik, useFormik, useFormikContext, ErrorMessage } from "formik";
 import { Wrapper, Stylepage } from "./login";
-import { Space } from "../components/share/Space";
-import router from "next/router";
 export const Order = () => {
   const [user, setUser] = useState();
 

@@ -1,7 +1,4 @@
-import { Header } from "../components/home/header";
-import Head from "next/head";
 import styled, { css } from "styled-components";
-import { BackgroundImage } from "../components/BackgroundImage";
 import { BackImage } from "../components/Image";
 import { SubTitel } from "../components/SubTitel";
 import { Categories } from "../components/Categories";
@@ -10,8 +7,8 @@ import react, { useEffect, useState } from "react";
 import axios from "axios";
 import { desktop, mobile, tablet } from "../components/home/utils/media";
 import { MainWrapper, MainRow } from "./Style";
-import Link from "next/link";
 import { Homeproduct } from "../components/Homeproduct";
+
 function HomePage() {
   const [cats, SetCats] = useState([]);
   const [products, SetProducts] = useState([]);
