@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "CI= next-scripts build",
     "start": "next start",
     "lint": "next lint"
   },
