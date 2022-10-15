@@ -6,7 +6,6 @@ import { config } from "../components/home/utils/main";
 import react, { useEffect, useState } from "react";
 import axios from "axios";
 import { desktop, mobile, tablet } from "../components/home/utils/media";
-import { MainWrapper, MainRow } from "./Style";
 import { Homeproduct } from "../components/Homeproduct";
 
 function HomePage() {
