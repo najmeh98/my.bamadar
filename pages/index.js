@@ -126,7 +126,7 @@ export const Row = styled.div`
 `;
 
 const Wrapper = styled.div`
-   min-width: 19000px;
+//    min-width: 19000px;
   height: 330px;
   border: 1px solid white;
   border: none;
