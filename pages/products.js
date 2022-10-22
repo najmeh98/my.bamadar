@@ -38,7 +38,7 @@ const Products = () => {
     //   const subProduct = [];
     if (!id) return;
     axios
-      .get(`${config}/data/api/product/${id}`)
+      .get(`${config}/api/product/${id}`)
       .then(function (response) {
         console.log(response.data.data);
         SetsubProduct(response.data.data);
