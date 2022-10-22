@@ -18,7 +18,7 @@ const Sub_categories = () => {
   useEffect(() => {
     //    if (!id) return;
     axios
-      .get(`https://www.bamadar.com/data/api/all_categories`)
+      .get(`https://my.bamadar.com/api/all_categories`)
       .then(function (response) {
         console.log(response.data);
         SetsubCat(response.data);
