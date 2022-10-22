@@ -26,7 +26,7 @@ function Login() {
     setloading(true);
     axios
       .post(
-        Config + "/api/user/login",
+        config + "/api/user/login",
         {
           mobile: mobileNumber,
         },
@@ -61,7 +61,7 @@ function Login() {
     setloading(true);
     axios
       .post(
-        Config + "/api/user/verify",
+        config + "/api/user/verify",
         {
           mobile: mobileNumber,
           otp: verificationCode,

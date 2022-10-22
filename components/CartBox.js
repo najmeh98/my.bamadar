@@ -3,7 +3,7 @@ import { AddIconProduct } from "./home/AddIconProduct";
 import styled, { css } from "styled-components";
 import Changecount from "./home/Changecount";
 import { Price } from "./share/Price";
-import { Config } from "./home/utils/main";
+import { config } from "./home/utils/main";
 import { mobile } from "./home/utils/media";
 
 export default function CartBox({
@@ -21,7 +21,7 @@ export default function CartBox({
             <img src="/no image.png" alt=" no img" width="65px" height="65px" />
           ) : (
             <img
-              src={Config + items.images.thumb}
+              src={config + items.images.thumb}
               alt="box image"
               width="65px"
               height="65px"

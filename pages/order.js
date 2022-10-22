@@ -14,7 +14,7 @@ export const Order = () => {
     let token = localStorage.getItem("token");
     axios
       .post(
-        Config + "/api/user/update_info",
+        config + "/api/user/update_info",
         {
           ...data,
         },
@@ -35,7 +35,7 @@ export const Order = () => {
   const userInfo = useCallback(() => {
     axios
       .post(
-        Config + "/api/user/me",
+        config + "/api/user/me",
         {
           token: localStorage.getItem("token"),
         }
