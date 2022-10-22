@@ -14,7 +14,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get(`https://my.bamadar.com/api/all_categories`)
+      .get(`${config}/api/all_categories`)
       .then(function (response) {
         // handle success
 

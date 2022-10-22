@@ -12,7 +12,7 @@ export const SearchInput = () => {
 
   useEffect(() => {
     axios
-      .get("https://www.bamadar.com/data/api/all_categories" + InputValue)
+      .get(`${config}/api/all_categories` + InputValue)
       .then(function (response) {
         console.log(response.data.data);
         SetitemList(response.data.data);

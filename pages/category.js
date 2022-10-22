@@ -53,7 +53,7 @@ const Category = () => {
     // ادرس کانفیک رو مطابق وبسایت بامادر تغییر دادم
     // https://www.bamadar.com/data
 
-    let url = `https://my.bamadar.com/api/get_products?category=${action}`;
+    let url = `${config}/api/get_products?category=${action}`;
     if (page) {
       url += "&page=" + page;
     }

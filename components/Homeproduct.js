@@ -27,7 +27,7 @@ export const Homeproduct = () => {
 
   useEffect(() => {
     axios
-      .get(`https://my.bamadar.com/api/get_promotions`)
+      .get(`${config}/api/get_promotions`)
       .then(function (response) {
         // handle success
         console.log(response.data.data);

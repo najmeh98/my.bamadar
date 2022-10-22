@@ -9,6 +9,7 @@ import {
   notmobile,
   tablet,
 } from "../components/home/utils/media";
+import { config } from "../components/home/utils/main";
 
 const Sub_categories = () => {
   const [subCat, SetsubCat] = useState([]);
@@ -18,7 +19,7 @@ const Sub_categories = () => {
   useEffect(() => {
     //    if (!id) return;
     axios
-      .get(`https://my.bamadar.com/api/all_categories`)
+      .get(`${config}/api/all_categories`)
       .then(function (response) {
         console.log(response.data);
         SetsubCat(response.data);
