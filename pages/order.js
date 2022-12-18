@@ -588,6 +588,7 @@ const Table = styled.div`
   align-items: center;
   justify-content: center;
   text-align: right;
+  width:100%
 `;
 
 const Content = styled.div`
